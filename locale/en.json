@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Restart Control (dsh-plugin-restart-control)",
+    "description": "Reload the kernel or restart the whole application from Settings: reload re-composes the plugin tree through DSH's own HMR (process and window preserved), restart ends the shell from a detached helper and relaunches it."
+  }
+}
