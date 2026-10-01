@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "重启控制 (dsh-plugin-restart-control)",
+    "description": "在设置里重载内核或重启整个应用：重载走 DSH 官方 HMR 重新组合插件树（进程与窗口保留），重启由分离助手结束外壳并重新拉起。"
+  }
+}

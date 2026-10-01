@@ -1,0 +1,96 @@
+{
+	"name": "dsh-plugin-restart-control",
+	"version": "0.1.0",
+	"description": "DSH 重启控制：在设置里提供「重载内核」（经官方 HMR 重新组合插件树，进程与窗口保留）与「重启应用」（detached 助手重启整个 Electron 外壳），带二次确认与任务占用提示。Restart control for DeepSeek Harness: a settings section offering an in-place kernel reload (HMR re-composition, no process restart) and a full application restart via a detached helper, both guarded by confirmation.",
+	"license": "MIT",
+	"author": "MerlinShieh",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MerlinShieh/dsh-plugin-restart-control.git"
+	},
+	"homepage": "https://github.com/MerlinShieh/dsh-plugin-restart-control#readme",
+	"bugs": {
+		"url": "https://github.com/MerlinShieh/dsh-plugin-restart-control/issues"
+	},
+	"type": "module",
+	"main": "lib/index.js",
+	"exports": {
+		".": {
+			"default": "./lib/index.js"
+		},
+		"./client": {
+			"default": "./lib/client.js"
+		},
+		"./package.json": "./package.json",
+		"./locale/*.json": "./locale/*.json"
+	},
+	"files": [
+		"lib/index.js",
+		"lib/client.js",
+		"lib/restart-helper.js",
+		"cordis.patch.yml",
+		"locale",
+		"icon.svg",
+		"README.md",
+		"README.en.md",
+		"LICENSE"
+	],
+	"keywords": [
+		"deepseek",
+		"deepseek-harness",
+		"dsh",
+		"dsh-plugin",
+		"restart",
+		"reload",
+		"hmr",
+		"desktop",
+		"重启",
+		"重载"
+	],
+	"engines": {
+		"node": ">=20",
+		"dsh": ">=0.2.0-rc.1 <0.3.0-0"
+	},
+	"scripts": {
+		"check": "node --check lib/index.js && node --check lib/restart-helper.js && node --check lib/client.js"
+	},
+	"dsh": {
+		"manifestVersion": 1,
+		"bundle": {
+			"patch": "./cordis.patch.yml"
+		},
+		"client": {
+			"inject": [
+				"@deepseek-ai/dsh-client-locale",
+				"@deepseek-ai/dsh-client-ui-settings",
+				"@deepseek-ai/dsh-client-ui-settings-general"
+			],
+			"platform": "web",
+			"immediately": true
+		}
+	},
+	"peerDependencies": {
+		"@deepseek-ai/cordis": "^4.0.1",
+		"@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.6 <0.3.0-0",
+		"@deepseek-ai/dsh-client-ui-settings": ">=0.1.0-rc.6 <0.3.0-0",
+		"@deepseek-ai/dsh-client-ui-settings-general": ">=0.1.0-rc.6 <0.3.0-0",
+		"react": "^18.2.0"
+	},
+	"peerDependenciesMeta": {
+		"@deepseek-ai/cordis": {
+			"optional": true
+		},
+		"@deepseek-ai/dsh-client-locale": {
+			"optional": true
+		},
+		"@deepseek-ai/dsh-client-ui-settings": {
+			"optional": true
+		},
+		"@deepseek-ai/dsh-client-ui-settings-general": {
+			"optional": true
+		},
+		"react": {
+			"optional": true
+		}
+	}
+}
